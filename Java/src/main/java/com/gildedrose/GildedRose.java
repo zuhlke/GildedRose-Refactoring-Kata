@@ -51,11 +51,11 @@ class GildedRose {
     }
 
     public boolean itemNameIsBackstagePass(int i) {
-        return items[i].name.startsWith("Backstage pass");
+        return items[i].name.contains("Backstage pass");
     }
 
     public boolean itemNameIsSulfuras(int i) {
-        return items[i].name.startsWith("Sulfuras");
+        return items[i].name.contains("Sulfuras");
     }
 
     public void updateQuality() {
