@@ -71,6 +71,14 @@ class GildedRoseTest {
         assertEquals(49, app.items[0].quality);
     }
 
+    @Test
+    void sellNOfSulfurasCannotDecreaseOrIncrease() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 20, 49) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(20, app.items[0].sellIn);
+    }
+
     /*
     Once the sell by date has passed, Quality degrades twice as fast = Done
     The Quality of an item is never negative = Done
