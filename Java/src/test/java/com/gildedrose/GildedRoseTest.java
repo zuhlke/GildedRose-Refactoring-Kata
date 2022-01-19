@@ -90,6 +90,14 @@ class GildedRoseTest {
         assertEquals(32, app.items[1].quality);
         assertEquals(33, app.items[2].quality);
     }
+
+    @Test
+    void backstagePassQualityDropsToZeroAfterConcert() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 30)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
     /*
     Once the sell by date has passed, Quality degrades twice as fast = Done
     The Quality of an item is never negative = Done
