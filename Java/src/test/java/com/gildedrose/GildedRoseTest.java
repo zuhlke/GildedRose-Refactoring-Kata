@@ -62,11 +62,20 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
     }
+
+    @Test
+    void qualityofSulfurasCannotDecrease() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 20, 49) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(49, app.items[0].quality);
+    }
+
     /*
     Once the sell by date has passed, Quality degrades twice as fast = Done
     The Quality of an item is never negative = Done
     "Aged Brie" actually increases in Quality the older it gets = Done
-    The Quality of an item is never more than 50
+    The Quality of an item is never more than 50 = Done
     "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
     "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches;
     Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
