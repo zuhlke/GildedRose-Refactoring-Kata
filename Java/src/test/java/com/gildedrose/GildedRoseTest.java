@@ -35,9 +35,26 @@ class GildedRoseTest {
         assertEquals(qualityExpected, app.items[0].quality);
     }
 
+    @Test
+    void qualityOfAgedBrieIncreasesWithAge() {
+        Item[] items = new Item[] { new Item("Aged Brie", 3, 0) };
+        GildedRose app = new GildedRose(items);
+        int qualityExpected = 1;
+        app.updateQuality();
+        assertEquals(qualityExpected, app.items[0].quality);
+    }
+
+    @Test
+    void qualityOfAgedBrieIncreasesDoublePastSellBy() {
+        Item[] items = new Item[] { new Item("Aged Brie", 0, 0) };
+        GildedRose app = new GildedRose(items);
+        int qualityExpected = 2;
+        app.updateQuality();
+        assertEquals(qualityExpected, app.items[0].quality);
+    }
     /*
     Once the sell by date has passed, Quality degrades twice as fast = Done
-    The Quality of an item is never negative =
+    The Quality of an item is never negative = Done
     "Aged Brie" actually increases in Quality the older it gets
     The Quality of an item is never more than 50
     "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
