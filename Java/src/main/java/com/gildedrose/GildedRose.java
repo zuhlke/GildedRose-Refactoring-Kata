@@ -2,7 +2,6 @@ package com.gildedrose;
 
 class GildedRose {
     Item[] items;
-
     public GildedRose(Item[] items) {
         this.items = items;
     }
@@ -50,19 +49,19 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             decreaseSellIn(i);
-            if (!items[i].name.equals("Aged Brie")
-                    && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                decreaseQuality(i);
-                if (items[i].sellIn < 0) {
-                    decreaseQuality(i);
-                }
-            } else {
+            if (items[i].name.equals("Aged Brie") || items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 increaseQualityIfQualityLessThan50(i);
                 if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     updateBackstagePass(i);
                 }
                 if(items[i].name.equals("Aged Brie")) {
                     updateAgedBrie(i);
+                }
+            }
+            else {
+                decreaseQuality(i);
+                if (items[i].sellIn < 0) {
+                    decreaseQuality(i);
                 }
             }
         }
